@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册表单</title>
+    
+</head>
+
+<body>
+
+    <h1><span style="font-size:28px;">用户注册</span></h1>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+        <table class="invisible-table">
+
+            <tr>
+                <td class="form-label">用户名称</td>
+                <td class="form-field">
+                    <input type="text" name="username" value="beibeifang">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="form-label">用户密码</td>
+                <td class="form-field">
+                    <input type="password" name="password" value="123456">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="form-label">用户性别</td>
+                <td class="form-field radio-group">
+                    <label>
+                        <input type="radio" name="gender" value="女" checked> 女
+                    </label>
+                    <label style="margin-left: 30px;">
+                        <input type="radio" name="gender" value="男"> 男
+                    </label>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="form-label">爱好</td>
+                <td class="form-field checkbox-group">
+                    <label><input type="checkbox" name="hobby" value="足球"> 足球</label>
+                    <label><input type="checkbox" name="hobby" value="排球"> 排球</label>
+                     <label><input type="checkbox" name="hobby" value="韩剧"> 韩剧</label>
+                    <label><input type="checkbox" name="hobby" value="王者荣耀" checked> 王者荣耀</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="form-label">家庭住址</td>
+                <td class="form-field">
+                    <select name="address">
+                        <option value="安徽省">安徽省</option>
+                        <option value="山西省">山西省</option>
+                        <option value="辽宁省">辽宁省</option>
+                        <option value="吉林省">吉林省</option>
+                        <option value="黑龙江省">黑龙江省</option>
+                    </select>
+                </td>
+            </tr>
+
+	    <tr>
+                <td colspan="2" style="text-align: center; padding-top: 30px;">
+                    <button type="submit" class="submit-btn">提交注册</button>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+
+</body>
+
+</html>
