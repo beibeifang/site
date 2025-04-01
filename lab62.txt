@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quadratic Equation Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td, th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            min-width: 100px;
+        }
+        input {
+            width: 50px;
+            text-align: center;
+            padding: 3px;
+        }
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        #solutionArea {
+            min-height: 40px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td id="solutionArea">等待输入方程...</td>
+            <td>
+                <input type="number" id="a" step="any" placeholder="a">x² + 
+                <input type="number" id="b" step="any" placeholder="b">x + 
+                <input type="number" id="c" step="any" placeholder="c"> = 0
+            </td>
+            <td><button onclick="solveEquation()">求解</button></td>
+        </tr>
+    </table>
+
+    <script>
+        function solveEquation() {
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const solutionArea = document.getElementById('solutionArea');
+
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                solutionArea.innerHTML = "错误：请输入有效的数字！";
+                return;
+            }
+
+           
+            if (a === 0) {
+                if (b === 0) {
+                    solutionArea.innerHTML = c === 0 
+                        ? "所有实数都是解" 
+                        : "方程无解";
+                } else {
+                    const x = -c / b;
+                    solutionArea.innerHTML = `唯一解：x = ${formatNumber(x)}`;
+                }
+                return;
+            }
+
+          
+            const delta = b * b - 4 * a * c;
+            
+
+            if (delta > 0) {
+                const sqrtDelta = Math.sqrt(delta);
+                const x1 = (-b + sqrtDelta) / (2 * a);
+                const x2 = (-b - sqrtDelta) / (2 * a);
+                solutionArea.innerHTML = `两个实根：<br>x₁ = ${formatNumber(x1)}<br>x₂ = ${formatNumber(x2)}`;
+            } else if (delta === 0) {
+                const x = -b / (2 * a);
+                solutionArea.innerHTML = `重根：x = ${formatNumber(x)}`;
+            } else {
+                const realPart = -b / (2 * a);
+                const imaginaryPart = Math.sqrt(-delta) / (2 * a);
+                solutionArea.innerHTML = `两个复根：<br>x₁ = ${formatComplex(realPart, imaginaryPart)}<br>x₂ = ${formatComplex(realPart, -imaginaryPart)}`;
+            }
+        }
+
+
+        function formatNumber(num) {
+            return Number.isInteger(num) 
+                ? num.toString() 
+                : num.toFixed(2).replace(/\.?0+$/, '');
+        }
+
+
+        function formatComplex(real, imaginary) {
+            const realStr = real !== 0 ? formatNumber(real) : '';
+            const imagStr = imaginary !== 0 
+                ? `${imaginary === 1 ? '' : formatNumber(Math.abs(imaginary))}i` 
+                : '';
+            
+            if (real === 0 && imaginary === 0) return '0';
+            if (real === 0) return `${imagStr}`;
+            if (imaginary === 0) return `${realStr}`;
+            
+            const operator = imaginary > 0 ? '+' : '-';
+            return `${realStr} ${operator} ${imagStr}`;
+        }
+    </script>
+</body>
+</html>
