@@ -1,0 +1,61 @@
+selection:branch:if-else
+one-way:
+if(condition)
+{
+some();
+}
+
+two-way:
+if(condition)
+{
+	some();
+}
+else
+{
+	other();
+}
+
+Where condition must a boolean(true/false)
+expression,e.g,a===b,e>f
+Logical AND: &&, Logical OR: ||, Logical NOT: !(x)
+
+so, a!=b is equivalent to !(a==b)
+
+Short circuit:
+(a == b && b == c) if the first one evaluates false
+
+(a==b || b==c)if the first one is true,we don't bother to test the second
+
+Muti-way selection:
+if() else if() else if()....else()
+
+switch (x)
+{
+	case 1:
+		(dosome);
+		break; (optionally)
+	case 2: 
+	dome10;
+break; (optionally)
+case 3:
+dome2): // optionally default:
+
+
+{
+	dome2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
